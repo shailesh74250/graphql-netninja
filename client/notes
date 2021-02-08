@@ -1,0 +1,4 @@
+in normal monolithic app we can api by fetch method or axios 
+but in graphql we can't call graphql server using axios or fetch 
+we need to use graphql-client which is apollo-client 
+apollo useful for creating graphql query from frontend 
