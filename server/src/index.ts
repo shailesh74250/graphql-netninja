@@ -1,7 +1,18 @@
-const express = require("express");
-const {graphqlHTTP} = require("express-graphql");
+import express from "express";
+import cors from 'cors';
+import mongoose from 'mongoose';
+import {graphqlHTTP} from "express-graphql";
 const schema = require("./schema/schema");
 const app = express();
+
+// connect to db
+mongoose.connect('mongodb+srv://admin:shailesh@cluster0.1oydy.mongodb.net/graphqldb?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connection.once('open', () => {
+	console.log('connected');
+})
+
+// use cors
+app.use(cors());
 
 app.use("/graphql", graphqlHTTP({
 	schema,
